@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="s15182Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Gosc">
+          <Key>
+            <PropertyRef Name="IdGosc" />
+          </Key>
+          <Property Name="IdGosc" Type="int" Nullable="false" />
+          <Property Name="Imie" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="Nazwisko" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="Procent_rabatu" Type="int" />
+        </EntityType>
+        <EntityType Name="Kategoria">
+          <Key>
+            <PropertyRef Name="IdKategoria" />
+          </Key>
+          <Property Name="IdKategoria" Type="int" Nullable="false" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="Cena" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pokoj">
+          <Key>
+            <PropertyRef Name="NrPokoju" />
+          </Key>
+          <Property Name="NrPokoju" Type="int" Nullable="false" />
+          <Property Name="IdKategoria" Type="int" Nullable="false" />
+          <Property Name="Liczba_miejsc" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rezerwacja">
+          <Key>
+            <PropertyRef Name="IdRezerwacja" />
+          </Key>
+          <Property Name="IdRezerwacja" Type="int" Nullable="false" />
+          <Property Name="DataOd" Type="datetime" Nullable="false" />
+          <Property Name="DataDo" Type="datetime" Nullable="false" />
+          <Property Name="IdGosc" Type="int" Nullable="false" />
+          <Property Name="NrPokoju" Type="int" Nullable="false" />
+          <Property Name="Zaplacona" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Pokoj__IdKategor__5A846E65">
+          <End Role="Kategoria" Type="Self.Kategoria" Multiplicity="1" />
+          <End Role="Pokoj" Type="Self.Pokoj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategoria">
+              <PropertyRef Name="IdKategoria" />
+            </Principal>
+            <Dependent Role="Pokoj">
+              <PropertyRef Name="IdKategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rezerwacj__IdGos__5D60DB10">
+          <End Role="Gosc" Type="Self.Gosc" Multiplicity="1" />
+          <End Role="Rezerwacja" Type="Self.Rezerwacja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gosc">
+              <PropertyRef Name="IdGosc" />
+            </Principal>
+            <Dependent Role="Rezerwacja">
+              <PropertyRef Name="IdGosc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rezerwacj__NrPok__5E54FF49">
+          <End Role="Pokoj" Type="Self.Pokoj" Multiplicity="1" />
+          <End Role="Rezerwacja" Type="Self.Rezerwacja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokoj">
+              <PropertyRef Name="NrPokoju" />
+            </Principal>
+            <Dependent Role="Rezerwacja">
+              <PropertyRef Name="NrPokoju" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="s15182ModelStoreContainer">
+          <EntitySet Name="Gosc" EntityType="Self.Gosc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategoria" EntityType="Self.Kategoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pokoj" EntityType="Self.Pokoj" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rezerwacja" EntityType="Self.Rezerwacja" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Pokoj__IdKategor__5A846E65" Association="Self.FK__Pokoj__IdKategor__5A846E65">
+            <End Role="Kategoria" EntitySet="Kategoria" />
+            <End Role="Pokoj" EntitySet="Pokoj" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rezerwacj__IdGos__5D60DB10" Association="Self.FK__Rezerwacj__IdGos__5D60DB10">
+            <End Role="Gosc" EntitySet="Gosc" />
+            <End Role="Rezerwacja" EntitySet="Rezerwacja" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rezerwacj__NrPok__5E54FF49" Association="Self.FK__Rezerwacj__NrPok__5E54FF49">
+            <End Role="Pokoj" EntitySet="Pokoj" />
+            <End Role="Rezerwacja" EntitySet="Rezerwacja" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="s15182Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Gosc">
+          <Key>
+            <PropertyRef Name="IdGosc" />
+          </Key>
+          <Property Name="IdGosc" Type="Int32" Nullable="false" />
+          <Property Name="Imie" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nazwisko" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Procent_rabatu" Type="Int32" />
+          <NavigationProperty Name="Rezerwacja" Relationship="Self.FK__Rezerwacj__IdGos__5D60DB10" FromRole="Gosc" ToRole="Rezerwacja" />
+        </EntityType>
+        <EntityType Name="Kategoria">
+          <Key>
+            <PropertyRef Name="IdKategoria" />
+          </Key>
+          <Property Name="IdKategoria" Type="Int32" Nullable="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cena" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Pokoj" Relationship="Self.FK__Pokoj__IdKategor__5A846E65" FromRole="Kategoria" ToRole="Pokoj" />
+        </EntityType>
+        <EntityType Name="Pokoj">
+          <Key>
+            <PropertyRef Name="NrPokoju" />
+          </Key>
+          <Property Name="NrPokoju" Type="Int32" Nullable="false" />
+          <Property Name="IdKategoria" Type="Int32" Nullable="false" />
+          <Property Name="Liczba_miejsc" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kategoria" Relationship="Self.FK__Pokoj__IdKategor__5A846E65" FromRole="Pokoj" ToRole="Kategoria" />
+          <NavigationProperty Name="Rezerwacja" Relationship="Self.FK__Rezerwacj__NrPok__5E54FF49" FromRole="Pokoj" ToRole="Rezerwacja" />
+        </EntityType>
+        <EntityType Name="Rezerwacja">
+          <Key>
+            <PropertyRef Name="IdRezerwacja" />
+          </Key>
+          <Property Name="IdRezerwacja" Type="Int32" Nullable="false" />
+          <Property Name="DataOd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DataDo" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdGosc" Type="Int32" Nullable="false" />
+          <Property Name="NrPokoju" Type="Int32" Nullable="false" />
+          <Property Name="Zaplacona" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Gosc" Relationship="Self.FK__Rezerwacj__IdGos__5D60DB10" FromRole="Rezerwacja" ToRole="Gosc" />
+          <NavigationProperty Name="Pokoj" Relationship="Self.FK__Rezerwacj__NrPok__5E54FF49" FromRole="Rezerwacja" ToRole="Pokoj" />
+        </EntityType>
+        <Association Name="FK__Rezerwacj__IdGos__5D60DB10">
+          <End Role="Gosc" Type="Self.Gosc" Multiplicity="1" />
+          <End Role="Rezerwacja" Type="Self.Rezerwacja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gosc">
+              <PropertyRef Name="IdGosc" />
+            </Principal>
+            <Dependent Role="Rezerwacja">
+              <PropertyRef Name="IdGosc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pokoj__IdKategor__5A846E65">
+          <End Role="Kategoria" Type="Self.Kategoria" Multiplicity="1" />
+          <End Role="Pokoj" Type="Self.Pokoj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategoria">
+              <PropertyRef Name="IdKategoria" />
+            </Principal>
+            <Dependent Role="Pokoj">
+              <PropertyRef Name="IdKategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rezerwacj__NrPok__5E54FF49">
+          <End Role="Pokoj" Type="Self.Pokoj" Multiplicity="1" />
+          <End Role="Rezerwacja" Type="Self.Rezerwacja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokoj">
+              <PropertyRef Name="NrPokoju" />
+            </Principal>
+            <Dependent Role="Rezerwacja">
+              <PropertyRef Name="NrPokoju" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="s15182Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Gosc" EntityType="Self.Gosc" />
+          <EntitySet Name="Kategoria" EntityType="Self.Kategoria" />
+          <EntitySet Name="Pokoj" EntityType="Self.Pokoj" />
+          <EntitySet Name="Rezerwacja" EntityType="Self.Rezerwacja" />
+          <AssociationSet Name="FK__Rezerwacj__IdGos__5D60DB10" Association="Self.FK__Rezerwacj__IdGos__5D60DB10">
+            <End Role="Gosc" EntitySet="Gosc" />
+            <End Role="Rezerwacja" EntitySet="Rezerwacja" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pokoj__IdKategor__5A846E65" Association="Self.FK__Pokoj__IdKategor__5A846E65">
+            <End Role="Kategoria" EntitySet="Kategoria" />
+            <End Role="Pokoj" EntitySet="Pokoj" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rezerwacj__NrPok__5E54FF49" Association="Self.FK__Rezerwacj__NrPok__5E54FF49">
+            <End Role="Pokoj" EntitySet="Pokoj" />
+            <End Role="Rezerwacja" EntitySet="Rezerwacja" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="s15182ModelStoreContainer" CdmEntityContainer="s15182Entities">
+          <EntitySetMapping Name="Gosc">
+            <EntityTypeMapping TypeName="s15182Model.Gosc">
+              <MappingFragment StoreEntitySet="Gosc">
+                <ScalarProperty Name="IdGosc" ColumnName="IdGosc" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Procent_rabatu" ColumnName="Procent_rabatu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategoria">
+            <EntityTypeMapping TypeName="s15182Model.Kategoria">
+              <MappingFragment StoreEntitySet="Kategoria">
+                <ScalarProperty Name="IdKategoria" ColumnName="IdKategoria" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pokoj">
+            <EntityTypeMapping TypeName="s15182Model.Pokoj">
+              <MappingFragment StoreEntitySet="Pokoj">
+                <ScalarProperty Name="NrPokoju" ColumnName="NrPokoju" />
+                <ScalarProperty Name="IdKategoria" ColumnName="IdKategoria" />
+                <ScalarProperty Name="Liczba_miejsc" ColumnName="Liczba_miejsc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rezerwacja">
+            <EntityTypeMapping TypeName="s15182Model.Rezerwacja">
+              <MappingFragment StoreEntitySet="Rezerwacja">
+                <ScalarProperty Name="IdRezerwacja" ColumnName="IdRezerwacja" />
+                <ScalarProperty Name="DataOd" ColumnName="DataOd" />
+                <ScalarProperty Name="DataDo" ColumnName="DataDo" />
+                <ScalarProperty Name="IdGosc" ColumnName="IdGosc" />
+                <ScalarProperty Name="NrPokoju" ColumnName="NrPokoju" />
+                <ScalarProperty Name="Zaplacona" ColumnName="Zaplacona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

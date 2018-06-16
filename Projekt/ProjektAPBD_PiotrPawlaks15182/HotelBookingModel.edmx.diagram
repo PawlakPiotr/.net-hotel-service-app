@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="16c3af64446e41088052e56a4695aeab" Name="Diagram1">
+        <EntityTypeShape EntityType="s15182Model.Gosc" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="s15182Model.Kategoria" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="s15182Model.Pokoj" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="s15182Model.Rezerwacja" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="s15182Model.FK__Rezerwacj__IdGos__5D60DB10" ManuallyRouted="false" />
+        <AssociationConnector Association="s15182Model.FK__Pokoj__IdKategor__5A846E65" ManuallyRouted="false" />
+        <AssociationConnector Association="s15182Model.FK__Rezerwacj__NrPok__5E54FF49" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

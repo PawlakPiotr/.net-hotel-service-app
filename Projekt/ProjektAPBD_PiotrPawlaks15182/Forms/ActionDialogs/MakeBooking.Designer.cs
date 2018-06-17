@@ -43,11 +43,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.RoomCategoryLabel = new System.Windows.Forms.Label();
+            this.PriceInfoLabel = new System.Windows.Forms.Label();
+            this.PriceLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // MakeBookingButton
             // 
-            this.MakeBookingButton.Location = new System.Drawing.Point(83, 480);
+            this.MakeBookingButton.Location = new System.Drawing.Point(98, 557);
             this.MakeBookingButton.Name = "MakeBookingButton";
             this.MakeBookingButton.Size = new System.Drawing.Size(222, 51);
             this.MakeBookingButton.TabIndex = 0;
@@ -61,6 +63,7 @@
             this.DateFrom.Name = "DateFrom";
             this.DateFrom.Size = new System.Drawing.Size(200, 26);
             this.DateFrom.TabIndex = 1;
+            this.DateFrom.ValueChanged += new System.EventHandler(this.DateFrom_ValueChanged);
             // 
             // DateTo
             // 
@@ -68,6 +71,7 @@
             this.DateTo.Name = "DateTo";
             this.DateTo.Size = new System.Drawing.Size(200, 26);
             this.DateTo.TabIndex = 2;
+            this.DateTo.ValueChanged += new System.EventHandler(this.DateTo_ValueChanged);
             // 
             // ImieTextBox
             // 
@@ -178,11 +182,30 @@
             this.RoomCategoryLabel.Size = new System.Drawing.Size(0, 20);
             this.RoomCategoryLabel.TabIndex = 15;
             // 
+            // PriceInfoLabel
+            // 
+            this.PriceInfoLabel.AutoSize = true;
+            this.PriceInfoLabel.Location = new System.Drawing.Point(183, 506);
+            this.PriceInfoLabel.Name = "PriceInfoLabel";
+            this.PriceInfoLabel.Size = new System.Drawing.Size(103, 20);
+            this.PriceInfoLabel.TabIndex = 16;
+            this.PriceInfoLabel.Text = "Cena pobytu:";
+            // 
+            // PriceLabel
+            // 
+            this.PriceLabel.AutoSize = true;
+            this.PriceLabel.Location = new System.Drawing.Point(292, 506);
+            this.PriceLabel.Name = "PriceLabel";
+            this.PriceLabel.Size = new System.Drawing.Size(0, 20);
+            this.PriceLabel.TabIndex = 17;
+            // 
             // MakeBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(422, 552);
+            this.ClientSize = new System.Drawing.Size(422, 620);
+            this.Controls.Add(this.PriceLabel);
+            this.Controls.Add(this.PriceInfoLabel);
             this.Controls.Add(this.RoomCategoryLabel);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -222,5 +245,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label RoomCategoryLabel;
+        private System.Windows.Forms.Label PriceInfoLabel;
+        private System.Windows.Forms.Label PriceLabel;
     }
 }

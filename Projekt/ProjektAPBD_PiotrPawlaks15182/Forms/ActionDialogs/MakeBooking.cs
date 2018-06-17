@@ -26,6 +26,7 @@ namespace ProjektAPBD_PiotrPawlaks15182.Forms
             RoomNumberComboBox.DataSource = roomNumbers.ToList();
 
             ShowRoomCategory();
+            SetVisitPrice();
 
             NotPaidCheckBox.Checked = true;
             MakeBookingButton.Enabled = false;
@@ -178,6 +179,39 @@ namespace ProjektAPBD_PiotrPawlaks15182.Forms
                                     .Replace("=", "")
                                     .Replace("}", "")
                                     .Replace(" ", "");
+
+            SetVisitPrice();
+        }
+
+        private void SetVisitPrice()
+        {
+            var SetPrice = (from p in db.Kategoria
+                            where p.Nazwa == RoomCategoryLabel.Text
+                            select p.Cena).FirstOrDefault();
+
+            var Price = SetPrice;
+
+            var DateFr = DateFrom.Value;
+            var DateT = DateTo.Value;
+
+            TimeSpan ts = DateT - DateFr;
+
+            int diff = ts.Days+1;
+
+            if(diff > 0)
+                PriceLabel.Text = Price*diff + " zł ";
+            else
+                PriceLabel.Text = Price + " zł ";
+        }
+
+        private void DateFrom_ValueChanged(object sender, EventArgs e)
+        {
+            SetVisitPrice();
+        }
+
+        private void DateTo_ValueChanged(object sender, EventArgs e)
+        {
+            SetVisitPrice();
         }
     }
 }

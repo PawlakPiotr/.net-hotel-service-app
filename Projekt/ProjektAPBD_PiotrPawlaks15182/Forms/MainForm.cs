@@ -138,7 +138,7 @@ namespace ProjektAPBD_PiotrPawlaks15182
                                 g.Nazwisko,
                                 r.Zaplacona,
                                 g.IdGosc,
-                                r.IdRezerwacja
+                                r.IdRezerwacja,
                             };
 
             BookingGridView.DataSource = selectAll.ToList();

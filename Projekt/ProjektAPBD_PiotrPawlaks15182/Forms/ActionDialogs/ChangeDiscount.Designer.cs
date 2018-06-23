@@ -59,6 +59,7 @@
             this.NewDiscountTextBox.Name = "NewDiscountTextBox";
             this.NewDiscountTextBox.Size = new System.Drawing.Size(80, 26);
             this.NewDiscountTextBox.TabIndex = 2;
+            this.NewDiscountTextBox.TextChanged += new System.EventHandler(this.NewDiscountTextBox_TextChanged);
             // 
             // NameLabel
             // 

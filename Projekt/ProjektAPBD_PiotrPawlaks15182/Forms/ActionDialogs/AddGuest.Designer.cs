@@ -62,6 +62,7 @@
             this.ImieTextBox.Name = "ImieTextBox";
             this.ImieTextBox.Size = new System.Drawing.Size(239, 26);
             this.ImieTextBox.TabIndex = 2;
+            this.ImieTextBox.TextChanged += new System.EventHandler(this.ImieTextBox_TextChanged);
             // 
             // NazwiskoTextBox
             // 
@@ -69,6 +70,7 @@
             this.NazwiskoTextBox.Name = "NazwiskoTextBox";
             this.NazwiskoTextBox.Size = new System.Drawing.Size(239, 26);
             this.NazwiskoTextBox.TabIndex = 4;
+            this.NazwiskoTextBox.TextChanged += new System.EventHandler(this.NazwiskoTextBox_TextChanged);
             // 
             // label2
             // 
@@ -85,6 +87,7 @@
             this.DiscountTextBox.Name = "DiscountTextBox";
             this.DiscountTextBox.Size = new System.Drawing.Size(104, 26);
             this.DiscountTextBox.TabIndex = 6;
+            this.DiscountTextBox.TextChanged += new System.EventHandler(this.DiscountTextBox_TextChanged);
             // 
             // label3
             // 

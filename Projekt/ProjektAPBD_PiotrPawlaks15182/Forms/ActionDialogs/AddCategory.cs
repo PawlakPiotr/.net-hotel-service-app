@@ -18,8 +18,13 @@ namespace ProjektAPBD_PiotrPawlaks15182.Forms.ActionDialogs
         public AddCategory()
         {
             InitializeComponent();
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+
             db = new s15182Entities();
             AddCategoryButton.Enabled = false;
+
+            PriceTextBox.TextAlign = HorizontalAlignment.Center;
         }
 
         private void AddCategoryButton_Click(object sender, EventArgs e)
@@ -74,7 +79,14 @@ namespace ProjektAPBD_PiotrPawlaks15182.Forms.ActionDialogs
             {
                 if (!Price.Equals(""))
                 {
-                    AddCategoryButton.Enabled = true;
+                    var isNUmeric = Int32.TryParse(Price, out int n);
+
+                    if (n > 0)
+                    {
+                        AddCategoryButton.Enabled = true;
+                    }
+                    else
+                        AddCategoryButton.Enabled = false;
                 }
                 else
                 {

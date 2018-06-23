@@ -61,6 +61,7 @@
             this.RoomNumberTextBox.Name = "RoomNumberTextBox";
             this.RoomNumberTextBox.Size = new System.Drawing.Size(178, 26);
             this.RoomNumberTextBox.TabIndex = 2;
+            this.RoomNumberTextBox.TextChanged += new System.EventHandler(this.RoomNumberTextBox_TextChanged);
             // 
             // AddRoomLabel
             // 
@@ -86,6 +87,7 @@
             this.RoomGuestNumberTextBox.Name = "RoomGuestNumberTextBox";
             this.RoomGuestNumberTextBox.Size = new System.Drawing.Size(178, 26);
             this.RoomGuestNumberTextBox.TabIndex = 5;
+            this.RoomGuestNumberTextBox.TextChanged += new System.EventHandler(this.RoomGuestNumberTextBox_TextChanged);
             // 
             // RoomGuestNumberLabel
             // 

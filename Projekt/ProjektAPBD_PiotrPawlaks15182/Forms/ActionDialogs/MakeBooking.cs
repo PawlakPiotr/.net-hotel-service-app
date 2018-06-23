@@ -18,6 +18,9 @@ namespace ProjektAPBD_PiotrPawlaks15182.Forms
         public MakeBooking()
         {
             InitializeComponent();
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+
             db = new s15182Entities();
             MakeBookingButtonCliked = false;
 

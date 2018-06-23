@@ -142,6 +142,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1105, 575);
             this.Controls.Add(this.RoomsListButton);
             this.Controls.Add(this.AddRoomButton);
@@ -153,6 +154,7 @@
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.ReserveButton);
             this.Controls.Add(this.BookingGridView);
+            this.MinimumSize = new System.Drawing.Size(1127, 631);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.BookingGridView)).EndInit();

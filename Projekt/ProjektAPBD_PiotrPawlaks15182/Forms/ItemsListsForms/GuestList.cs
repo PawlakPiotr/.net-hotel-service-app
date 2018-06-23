@@ -23,6 +23,8 @@ namespace ProjektAPBD_PiotrPawlaks15182.Forms.ItemsListsForms
         public GuestList()
         {
             InitializeComponent();
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             ShowGuests();
         }
 

@@ -19,6 +19,9 @@ namespace ProjektAPBD_PiotrPawlaks15182.Forms.ActionDialogs
         public ChangeRoomPrice()
         {
             InitializeComponent();
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+
             db = new s15182Entities();
             Changed = false;
 
@@ -29,6 +32,7 @@ namespace ProjektAPBD_PiotrPawlaks15182.Forms.ActionDialogs
             CategoryLabel.Text = getKategoria.Nazwa + "";
 
             ChangePriceTextBox.TextAlign = HorizontalAlignment.Center;
+            ChangePriceButton.Enabled = false;
         }
 
         private void ChangePriceButton_Click(object sender, EventArgs e)
@@ -41,6 +45,23 @@ namespace ProjektAPBD_PiotrPawlaks15182.Forms.ActionDialogs
             db.SaveChanges();
             Changed = true;
             this.Close();
+        }
+
+        private void ChangePriceTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ValidateInputs();
+        }
+
+        private void ValidateInputs()
+        {
+            var isNUmeric = Int32.TryParse(ChangePriceTextBox.Text, out int n);
+
+            if (n > 0)
+            {
+                ChangePriceButton.Enabled = true;
+            }
+            else
+                ChangePriceButton.Enabled = false;
         }
     }
 }

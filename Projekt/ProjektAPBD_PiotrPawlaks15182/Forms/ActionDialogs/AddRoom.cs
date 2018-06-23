@@ -18,14 +18,20 @@ namespace ProjektAPBD_PiotrPawlaks15182.Forms.ActionDialogs
         public AddRoom()
         {
             InitializeComponent();
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+
+
             db = new s15182Entities();
 
             var roomCategories = from c in db.Kategoria
                                  select c.Nazwa;
 
             RoomCategoryComboBox.DataSource = roomCategories.ToList();
+
             RoomNumberTextBox.TextAlign = HorizontalAlignment.Center;
             RoomGuestNumberTextBox.TextAlign = HorizontalAlignment.Center;
+            AddRoomButton.Enabled = false;
         }
 
         private void AddRoomButton_Click(object sender, EventArgs e)
@@ -63,6 +69,42 @@ namespace ProjektAPBD_PiotrPawlaks15182.Forms.ActionDialogs
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void RoomNumberTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ValidateInputs();
+        }
+
+        private void ValidateInputs()
+        {
+            string RoomNumber = RoomNumberTextBox.Text.Replace(" ", "");
+            string GuestNumber = RoomGuestNumberTextBox.Text.Replace(" ", "");
+
+            if (!RoomNumber.Equals(""))
+            {
+                if (!GuestNumber.Equals(""))
+                {
+                    var isNUmeric_Room = Int32.TryParse(RoomNumber, out int n);
+                    var isNumeric_GN = Int32.TryParse(GuestNumber, out int r);
+
+                    if (n > 0 && r > 0)
+                    {
+                        AddRoomButton.Enabled = true;
+                    }
+                    else
+                        AddRoomButton.Enabled = false;
+                }
+                else
+                    AddRoomButton.Enabled = false;
+            }
+            else
+                AddRoomButton.Enabled = false;
+        }
+
+        private void RoomGuestNumberTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ValidateInputs();
         }
     }
 }

@@ -21,6 +21,8 @@ namespace ProjektAPBD_PiotrPawlaks15182.Forms.ItemsListsForms
             InitializeComponent();
 
             db = new s15182Entities();
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             showRooms();
         }
 

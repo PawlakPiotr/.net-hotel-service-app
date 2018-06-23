@@ -17,6 +17,8 @@ namespace ProjektAPBD_PiotrPawlaks15182.Forms.ConfirmationDialogs
         public DeleteGuestPopUp()
         {
             InitializeComponent();
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             DeleteAccepted = false;
         }
 

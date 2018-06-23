@@ -29,15 +29,5 @@ namespace ProjektAPBD_PiotrPawlaks15182
         public virtual DbSet<Kategoria> Kategoria { get; set; }
         public virtual DbSet<Pokoj> Pokoj { get; set; }
         public virtual DbSet<Rezerwacja> Rezerwacja { get; set; }
-
-        internal void InsertOnSubmit()
-        {
-            throw new NotImplementedException();
-        }
-
-        internal void SubmitChanges()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

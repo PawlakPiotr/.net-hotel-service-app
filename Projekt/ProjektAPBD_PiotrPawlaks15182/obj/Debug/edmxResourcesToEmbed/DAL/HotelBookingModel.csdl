@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="s15182Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Gosc">
+    <Key>
+      <PropertyRef Name="IdGosc" />
+    </Key>
+    <Property Name="IdGosc" Type="Int32" Nullable="false" />
+    <Property Name="Imie" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nazwisko" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Procent_rabatu" Type="Int32" />
+    <NavigationProperty Name="Rezerwacja" Relationship="Self.FK__Rezerwacj__IdGos__5D60DB10" FromRole="Gosc" ToRole="Rezerwacja" />
+  </EntityType>
+  <EntityType Name="Kategoria">
+    <Key>
+      <PropertyRef Name="IdKategoria" />
+    </Key>
+    <Property Name="IdKategoria" Type="Int32" Nullable="false" />
+    <Property Name="Nazwa" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cena" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="Pokoj" Relationship="Self.FK__Pokoj__IdKategor__5A846E65" FromRole="Kategoria" ToRole="Pokoj" />
+  </EntityType>
+  <EntityType Name="Pokoj">
+    <Key>
+      <PropertyRef Name="NrPokoju" />
+    </Key>
+    <Property Name="NrPokoju" Type="Int32" Nullable="false" />
+    <Property Name="IdKategoria" Type="Int32" Nullable="false" />
+    <Property Name="Liczba_miejsc" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Kategoria" Relationship="Self.FK__Pokoj__IdKategor__5A846E65" FromRole="Pokoj" ToRole="Kategoria" />
+    <NavigationProperty Name="Rezerwacja" Relationship="Self.FK__Rezerwacj__NrPok__5E54FF49" FromRole="Pokoj" ToRole="Rezerwacja" />
+  </EntityType>
+  <EntityType Name="Rezerwacja">
+    <Key>
+      <PropertyRef Name="IdRezerwacja" />
+    </Key>
+    <Property Name="IdRezerwacja" Type="Int32" Nullable="false" />
+    <Property Name="DataOd" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DataDo" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdGosc" Type="Int32" Nullable="false" />
+    <Property Name="NrPokoju" Type="Int32" Nullable="false" />
+    <Property Name="Zaplacona" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Gosc" Relationship="Self.FK__Rezerwacj__IdGos__5D60DB10" FromRole="Rezerwacja" ToRole="Gosc" />
+    <NavigationProperty Name="Pokoj" Relationship="Self.FK__Rezerwacj__NrPok__5E54FF49" FromRole="Rezerwacja" ToRole="Pokoj" />
+  </EntityType>
+  <Association Name="FK__Rezerwacj__IdGos__5D60DB10">
+    <End Role="Gosc" Type="Self.Gosc" Multiplicity="1" />
+    <End Role="Rezerwacja" Type="Self.Rezerwacja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gosc">
+        <PropertyRef Name="IdGosc" />
+      </Principal>
+      <Dependent Role="Rezerwacja">
+        <PropertyRef Name="IdGosc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Pokoj__IdKategor__5A846E65">
+    <End Role="Kategoria" Type="Self.Kategoria" Multiplicity="1" />
+    <End Role="Pokoj" Type="Self.Pokoj" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategoria">
+        <PropertyRef Name="IdKategoria" />
+      </Principal>
+      <Dependent Role="Pokoj">
+        <PropertyRef Name="IdKategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rezerwacj__NrPok__5E54FF49">
+    <End Role="Pokoj" Type="Self.Pokoj" Multiplicity="1" />
+    <End Role="Rezerwacja" Type="Self.Rezerwacja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pokoj">
+        <PropertyRef Name="NrPokoju" />
+      </Principal>
+      <Dependent Role="Rezerwacja">
+        <PropertyRef Name="NrPokoju" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="s15182Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Gosc" EntityType="Self.Gosc" />
+    <EntitySet Name="Kategoria" EntityType="Self.Kategoria" />
+    <EntitySet Name="Pokoj" EntityType="Self.Pokoj" />
+    <EntitySet Name="Rezerwacja" EntityType="Self.Rezerwacja" />
+    <AssociationSet Name="FK__Rezerwacj__IdGos__5D60DB10" Association="Self.FK__Rezerwacj__IdGos__5D60DB10">
+      <End Role="Gosc" EntitySet="Gosc" />
+      <End Role="Rezerwacja" EntitySet="Rezerwacja" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pokoj__IdKategor__5A846E65" Association="Self.FK__Pokoj__IdKategor__5A846E65">
+      <End Role="Kategoria" EntitySet="Kategoria" />
+      <End Role="Pokoj" EntitySet="Pokoj" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rezerwacj__NrPok__5E54FF49" Association="Self.FK__Rezerwacj__NrPok__5E54FF49">
+      <End Role="Pokoj" EntitySet="Pokoj" />
+      <End Role="Rezerwacja" EntitySet="Rezerwacja" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

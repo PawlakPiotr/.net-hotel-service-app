@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="s15182ModelStoreContainer" CdmEntityContainer="s15182Entities">
+    <EntitySetMapping Name="Gosc">
+      <EntityTypeMapping TypeName="s15182Model.Gosc">
+        <MappingFragment StoreEntitySet="Gosc">
+          <ScalarProperty Name="IdGosc" ColumnName="IdGosc" />
+          <ScalarProperty Name="Imie" ColumnName="Imie" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+          <ScalarProperty Name="Procent_rabatu" ColumnName="Procent_rabatu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kategoria">
+      <EntityTypeMapping TypeName="s15182Model.Kategoria">
+        <MappingFragment StoreEntitySet="Kategoria">
+          <ScalarProperty Name="IdKategoria" ColumnName="IdKategoria" />
+          <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+          <ScalarProperty Name="Cena" ColumnName="Cena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pokoj">
+      <EntityTypeMapping TypeName="s15182Model.Pokoj">
+        <MappingFragment StoreEntitySet="Pokoj">
+          <ScalarProperty Name="NrPokoju" ColumnName="NrPokoju" />
+          <ScalarProperty Name="IdKategoria" ColumnName="IdKategoria" />
+          <ScalarProperty Name="Liczba_miejsc" ColumnName="Liczba_miejsc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rezerwacja">
+      <EntityTypeMapping TypeName="s15182Model.Rezerwacja">
+        <MappingFragment StoreEntitySet="Rezerwacja">
+          <ScalarProperty Name="IdRezerwacja" ColumnName="IdRezerwacja" />
+          <ScalarProperty Name="DataOd" ColumnName="DataOd" />
+          <ScalarProperty Name="DataDo" ColumnName="DataDo" />
+          <ScalarProperty Name="IdGosc" ColumnName="IdGosc" />
+          <ScalarProperty Name="NrPokoju" ColumnName="NrPokoju" />
+          <ScalarProperty Name="Zaplacona" ColumnName="Zaplacona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

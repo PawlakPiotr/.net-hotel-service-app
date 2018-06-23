@@ -17,6 +17,8 @@ namespace ProjektAPBD_PiotrPawlaks15182
         public DeleteBookingPopUp()
         {
             InitializeComponent();
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             deleteButtonClicked = false;
         }
 

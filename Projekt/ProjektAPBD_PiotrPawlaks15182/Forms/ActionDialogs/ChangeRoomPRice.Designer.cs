@@ -96,6 +96,7 @@
             this.ChangePriceTextBox.Name = "ChangePriceTextBox";
             this.ChangePriceTextBox.Size = new System.Drawing.Size(75, 26);
             this.ChangePriceTextBox.TabIndex = 6;
+            this.ChangePriceTextBox.TextChanged += new System.EventHandler(this.ChangePriceTextBox_TextChanged);
             // 
             // ChangeRoomPrice
             // 

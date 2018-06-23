@@ -19,6 +19,9 @@ namespace ProjektAPBD_PiotrPawlaks15182.Forms.ActionDialogs
         public ChangeDiscount()
         {
             InitializeComponent();
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+
             db = new s15182Entities();
             Changed = false;
 
@@ -26,6 +29,7 @@ namespace ProjektAPBD_PiotrPawlaks15182.Forms.ActionDialogs
 
             NameLabel.Text = get.Imie+" "+get.Nazwisko;
             NewDiscountTextBox.TextAlign = HorizontalAlignment.Center;
+            ChangeDiscountButton.Enabled = false;
         }
 
         private void ChangeDiscountButton_Click(object sender, EventArgs e)
@@ -38,6 +42,23 @@ namespace ProjektAPBD_PiotrPawlaks15182.Forms.ActionDialogs
             Changed = true;
 
             this.Close();
+        }
+
+        private void ValidateInputs()
+        {
+            var isNUmeric = Int32.TryParse(NewDiscountTextBox.Text, out int n);
+
+            if (n > 0)
+            {
+                ChangeDiscountButton.Enabled = true;
+            }
+            else
+                ChangeDiscountButton.Enabled = false;
+        }
+
+        private void NewDiscountTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ValidateInputs();
         }
     }
 }
